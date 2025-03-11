@@ -22,6 +22,10 @@ Plugins = {
 	-- Fuzzy Finder and Picker
 	{ 'ibhagwan/fzf-lua', opts = {'skim'} },
 
+	-- Help
+	{ 'MunifTanjim/nui.nvim' },
+	{ 'm4xshen/hardtime.nvim' },
+
 	-- Themes
 	{ 'p00f/alabaster.nvim' },
 	{ 'aktersnurra/no-clown-fiesta.nvim' },
