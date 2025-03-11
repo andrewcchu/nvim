@@ -37,18 +37,19 @@ if first_install then
   return
 end
 
--- [[ Plugins ]]
-require('mini.surround').setup()
-require('wrapping').setup({create_keymaps=false})
-require('plugin-config/treesitter')
-require('plugin-config/completion')
-require('plugin-config/multicursor')
-
 -- [[ Global commands ]]
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 vim.g.tex_flavor = 'latex'
+
+-- [[ Plugins ]]
+require('mini.surround').setup()
+require('wrapping').setup({create_keymaps=false})
+require('fzf-lua').setup({'skim'})
+require('plugin-config/treesitter')
+require('plugin-config/completion')
+require('plugin-config/multicursor')
 
 -- [[ General configuration ]]
 require('options')

@@ -65,7 +65,7 @@ require('blink.cmp').setup(
     keymap = {
       -- set to 'none' to disable the 'default' preset
       preset = 'default',
-      ['<Tab>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = { 'select_next', 'fallback' },
       ['<Enter>'] = { 'accept', 'fallback' },
     },
 

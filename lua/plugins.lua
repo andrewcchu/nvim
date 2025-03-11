@@ -19,6 +19,9 @@ Plugins = {
 	-- Selection
 	{ 'nvim-treesitter/nvim-treesitter-textobjects' },
 
+	-- Fuzzy Finder and Picker
+	{ 'ibhagwan/fzf-lua', opts = {'skim'} },
+
 	-- Themes
 	{ 'p00f/alabaster.nvim' },
 	{ 'aktersnurra/no-clown-fiesta.nvim' },
