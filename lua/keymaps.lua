@@ -36,7 +36,7 @@ vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>",
 
 -- Fzf-lua picker
 vim.keymap.set({ "n" }, "<leader>f",
-  function() require("fzf-lua").files() end,
+  function() require("fzf-lua").files({follow = true}) end,
   { silent = true, desc = "Picker" })
 
 -- [[ Basic Autocommands ]]
