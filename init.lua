@@ -41,7 +41,6 @@ end
 require('mini.surround').setup()
 require('wrapping').setup({create_keymaps=false})
 require('fzf-lua').setup({'skim'})
-require('hardtime').setup()
 require('plugin-config/treesitter')
 require('plugin-config/completion')
 require('plugin-config/multicursor')
