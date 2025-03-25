@@ -27,4 +27,4 @@ vim.opt.wildignore:append({
 
 vim.opt.background = "dark" -- set this to dark or light
 vim.opt.termguicolors = true
-vim.cmd.colorscheme "no-clown-fiesta"
+vim.cmd.colorscheme "alabaster"
