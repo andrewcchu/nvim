@@ -55,4 +55,4 @@ vim.g.tex_flavor = 'latex'
 require('options')
 require('keymaps')
 require('theme')
-
+require("mellifluous").setup({})
