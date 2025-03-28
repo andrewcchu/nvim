@@ -1,4 +1,3 @@
-
 Plugins = {
 	-- Text
 	{ 'echasnovski/mini.surround', version = false },
@@ -26,12 +25,11 @@ Plugins = {
 	-- Fuzzy Finder and Picker
 	{ 'ibhagwan/fzf-lua', opts = {'skim'} },
 
+	-- Cursor Smearing
+	{ 'sphamba/smear-cursor.nvim', opts = {stiffness = 0.8, trailing_stiffness = 0.5, distance_stop_animating = 0.5}},
+
 	-- Themes
 	{ 'p00f/alabaster.nvim' },
-	{ 'aktersnurra/no-clown-fiesta.nvim' },
-	{ 'ramojus/mellifluous.nvim' },
-	{ 'https://gitlab.com/bartekjaszczak/finale-nvim' },
 }
 
 return Plugins
-
