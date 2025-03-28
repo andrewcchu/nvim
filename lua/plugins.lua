@@ -13,7 +13,7 @@ Plugins = {
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'neovim/nvim-lspconfig' },
-	{ 'saghen/blink.cmp', build = 'cargo build --release' },
+	{ 'saghen/blink.cmp', version = '1.*', build = 'cargo build --release' },
 
 	-- Syntax
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
@@ -26,7 +26,7 @@ Plugins = {
 	{ 'ibhagwan/fzf-lua', opts = {'skim'} },
 
 	-- Cursor Smearing
-	{ 'sphamba/smear-cursor.nvim', opts = {stiffness = 0.8, trailing_stiffness = 0.5, distance_stop_animating = 0.5}},
+	{ 'sphamba/smear-cursor.nvim', opts = {stiffness = 0.5, trailing_stiffness = 0.49, never_draw_over_target = false}},
 
 	-- Themes
 	{ 'p00f/alabaster.nvim' },
