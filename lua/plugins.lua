@@ -7,6 +7,9 @@ Plugins = {
 	-- Wrapping
 	{ 'andrewferrier/wrapping.nvim' },
 
+	-- Hints
+	{ 'tris203/precognition.nvim' },
+
 	-- Completions
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
