@@ -6,9 +6,6 @@ Plugins = {
 	-- Wrapping
 	{ 'andrewferrier/wrapping.nvim' },
 
-	-- Hints
-	{ 'tris203/precognition.nvim' },
-
 	-- Completions
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
@@ -24,9 +21,6 @@ Plugins = {
 
 	-- Fuzzy Finder and Picker
 	{ 'ibhagwan/fzf-lua', opts = {'skim'} },
-
-	-- Cursor Smearing
-	{ 'sphamba/smear-cursor.nvim', opts = {stiffness = 0.5, trailing_stiffness = 0.49, never_draw_over_target = false}},
 
 	-- Themes
 	{ 'p00f/alabaster.nvim' },

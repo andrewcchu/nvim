@@ -55,5 +55,3 @@ vim.g.tex_flavor = 'latex'
 require('options')
 require('keymaps')
 require('theme')
-require('precognition').setup()
-require('smear_cursor').setup()
