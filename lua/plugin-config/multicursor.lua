@@ -1,55 +1,25 @@
-local mc = require("multicursor-nvim")
-mc.setup()
+require('multiple-cursors').setup()
 
-local set = vim.keymap.set
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true } -- Standard options for cleaner mappings
 
--- Add or skip cursor above/below the main cursor.
-set({"n", "x"}, "<up>", function() mc.lineAddCursor(-1) end)
-set({"n", "x"}, "<down>", function() mc.lineAddCursor(1) end)
-set({"n", "x"}, "<leader><up>", function() mc.lineSkipCursor(-1) end)
-set({"n", "x"}, "<leader><down>", function() mc.lineSkipCursor(1) end)
+-- Normal and Visual modes
+map({"n", "x"}, "<C-j>", "<Cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down", noremap=true })
+map({"n", "x"}, "<C-k>", "<Cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor and move up", noremap=true })
 
--- Add or skip adding a new cursor by matching word/selection
-set({"n", "x"}, "<leader>n", function() mc.matchAddCursor(1) end)
-set({"n", "x"}, "<leader>s", function() mc.matchSkipCursor(1) end)
-set({"n", "x"}, "<leader>N", function() mc.matchAddCursor(-1) end)
-set({"n", "x"}, "<leader>S", function() mc.matchSkipCursor(-1) end)
+-- Normal, Insert, and Visual modes
+map({"n", "i", "x"}, "<C-Up>", "<Cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor and move up", noremap=true })
+map({"n", "i", "x"}, "<C-Down>", "<Cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down", noremap=true })
 
--- Add and remove cursors with control + left click.
-set("n", "<c-leftmouse>", mc.handleMouse)
-set("n", "<c-leftdrag>", mc.handleMouseDrag)
-set("n", "<c-leftrelease>", mc.handleMouseRelease)
+-- Normal and Insert modes
+map({"n", "i"}, "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", { desc = "Add or remove cursor", noremap=true })
 
--- Disable and enable cursors.
-set({"n", "x"}, "<c-q>", mc.toggleCursor)
+-- Visual mode only
+map({"x"}, "<Leader>m", "<Cmd>MultipleCursorsAddVisualArea<CR>", { desc = "Add cursors to visual area lines", noremap=true })
 
--- Mappings defined in a keymap layer only apply when there are
--- multiple cursors. This lets you have overlapping mappings.
-mc.addKeymapLayer(function(layerSet)
-
-    -- Select a different cursor as the main one.
-    layerSet({"n", "x"}, "<left>", mc.prevCursor)
-    layerSet({"n", "x"}, "<right>", mc.nextCursor)
-
-    -- Delete the main cursor.
-    layerSet({"n", "x"}, "<leader>x", mc.deleteCursor)
-
-    -- Enable and clear cursors using escape.
-    layerSet("n", "<esc>", function()
-	if not mc.cursorsEnabled() then
-	    mc.enableCursors()
-	else
-	    mc.clearCursors()
-	end
-    end)
-end)
-
--- Customize how cursors look.
-local hl = vim.api.nvim_set_hl
-hl(0, "MultiCursorCursor", { link = "Cursor" })
-hl(0, "MultiCursorVisual", { link = "Visual" })
-hl(0, "MultiCursorSign", { link = "SignColumn"})
-hl(0, "MultiCursorMatchPreview", { link = "Search" })
-hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
-hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+-- Normal and Visual modes
+map({"n", "x"}, "<Leader>a", "<Cmd>MultipleCursorsAddMatches<CR>", { desc = "Add cursors to cword", noremap=true })
+map({"n", "x"}, "<Leader>A", "<Cmd>MultipleCursorsAddMatchesV<CR>", { desc = "Add cursors to cword in previous area", noremap=true })
+map({"n", "x"}, "<Leader>d", "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", { desc = "Add cursor and jump to next cword", noremap=true })
+map({"n", "x"}, "<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>", { desc = "Jump to next cword", noremap=true })
+map({"n", "x"}, "<Leader>l", "<Cmd>MultipleCursorsLock<CR>", { desc = "Lock virtual cursors", noremap=true })

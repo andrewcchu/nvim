@@ -6,7 +6,11 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>d', vim.diagnostic.setloclist, { desc = 'Open diagnostic list' })
+vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, { desc = 'Open diagnostic list' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open single diagnostic window' })
+
+-- Reformate text to textwidth
+vim.keymap.set('n', 'T', 'gqap', { desc = 'Reformat text to hardwrap at textwidth' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

@@ -3,7 +3,9 @@ local servers = {
   "bashls",        -- bash_language_server
   "pyright",       -- pyright
   "ruff",          -- python linting and formatting
-  "texlab",        -- latex editing and formatting
+  "texlab",        -- latex editing
+  "ltex_plus",     -- latex grammar/spellcheck
+  "rust_analyzer", -- rust language server
 }
 
 -- Setup Mason and get lang. servers

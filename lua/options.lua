@@ -3,8 +3,8 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Enable diagnostics on all lines
-vim.diagnostic.config {virtual_text = true }
+-- En/disable diagnostics on all lines
+vim.diagnostic.config {virtual_text = false }
 
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
