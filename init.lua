@@ -33,17 +33,18 @@ install_plugins(paq, first_install, require('plugins'))
 
 -- If this is the first install, notify and exit the configuration.
 if first_install then
-  vim.notify("Plugins are being installed. Please restart Neovim once more...", vim.log.levels.INFO)
-  return
+    vim.notify("Plugins are being installed. Please restart Neovim once more...", vim.log.levels.INFO)
+    return
 end
 
 -- [[ Plugins ]]
 require('mini.surround').setup()
-require('wrapping').setup({create_keymaps=false})
-require('fzf-lua').setup({'skim'})
+require('wrapping').setup({ create_keymaps = false })
+require('fzf-lua').setup({ 'skim' })
 require('plugin-config/treesitter')
 require('plugin-config/completion')
 require('plugin-config/multicursor')
+require('plugin-config/conform')
 
 -- [[ Global commands ]]
 vim.g.mapleader = ' '
