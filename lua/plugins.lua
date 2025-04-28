@@ -24,6 +24,8 @@ Plugins = {
 
     -- Themes
     { 'p00f/alabaster.nvim' },
+    { 'srcery-colors/srcery-vim' },
+    { 'ribru17/bamboo.nvim' },
 }
 
 return Plugins
