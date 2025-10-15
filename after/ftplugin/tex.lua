@@ -1,5 +1,11 @@
 -- Set visual soft-wrapping to 80 columns for TeX files
-vim.opt_local.columns = 80
+vim.opt_local.columns = 100
+-- vim.opt_local.textwidth = 80
+
+-- Let j and k move up and down lines that have been wrapped
+local opts = { buffer = true, desc = "LaTeX specific keybinds" }
+vim.keymap.set("n", "j", "gj", opts)
+vim.keymap.set("n", "k", "gk", opts)
 
 -- Apply a custom lualine configuration ONLY for TeX files
 require('lualine').setup {

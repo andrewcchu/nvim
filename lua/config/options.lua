@@ -17,7 +17,7 @@ vim.opt.wrapmargin = 0
 vim.opt.linebreak = true
 vim.opt.numberwidth = 5
 vim.opt.breakindent = true
-vim.opt.showbreak = '↪  '
+-- vim.opt.showbreak = '↪  '
 
 -- Make line numbers default
 vim.opt.number = true
