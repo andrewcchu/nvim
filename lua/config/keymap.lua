@@ -12,6 +12,9 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open singl
 -- Reformate text to textwidth
 vim.keymap.set('n', 'T', 'gqap', { desc = 'Reformat text to hardwrap at textwidth' })
 
+-- Set/unset paste mode
+vim.keymap.set({ 'n' }, '<C-p>', '<cmd>set paste!<cr>', { desc = 'Toggle paste mode' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -42,19 +45,3 @@ vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>",
 vim.keymap.set({ "n" }, "<leader>f",
   function() require("fzf-lua").files({ follow = true }) end,
   { silent = true, desc = "Picker" })
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- vim: ts=2 sts=2 sw=2 et

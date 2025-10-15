@@ -11,14 +11,16 @@ vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a T
 vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
--- Textwidth 80
-vim.opt.textwidth = 80
+-- Soft-wrap text visually at 80 columns
+vim.opt.wrap = true
+vim.opt.wrapmargin = 0
+vim.opt.linebreak = true
+vim.opt.numberwidth = 5
+vim.opt.breakindent = true
+vim.opt.showbreak = '↪  '
 
 -- Make line numbers default
 vim.opt.number = true
-
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -40,9 +42,6 @@ vim.cmd([[
 -- vim.schedule(function()
 --   vim.opt.clipboard = 'unnamedplus'
 -- end)
-
--- Enable break indent
-vim.opt.breakindent = true
 
 -- Save undo history
 vim.opt.undofile = true
