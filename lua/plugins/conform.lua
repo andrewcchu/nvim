@@ -29,6 +29,7 @@ return { -- Autoformat
             tex = { "tex-fmt" },
             python = { "isort", "black" },
             rust = { "rustfmt", lsp_format = "fallback" },
+            go = { "gofumpt" }
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             --
