@@ -18,15 +18,8 @@ return { -- Autoformat
                 lsp_format = lsp_format_opt,
             }
         end,
-        formatters = {
-            ['tex-fmt'] = {
-                -- Prepend arguments for formatters that read from stdin
-                args = { "-n" },
-            },
-        },
         formatters_by_ft = {
             lua = { "stylua" },
-            tex = { "tex-fmt" },
             python = { "isort", "black" },
             rust = { "rustfmt", lsp_format = "fallback" },
             go = { "gofumpt" }

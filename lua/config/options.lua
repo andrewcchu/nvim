@@ -11,7 +11,7 @@ vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a T
 vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
--- Soft-wrap text visually at 80 columns
+-- Soft-wrap text visually at editor border
 vim.opt.wrap = true
 vim.opt.wrapmargin = 0
 vim.opt.linebreak = true

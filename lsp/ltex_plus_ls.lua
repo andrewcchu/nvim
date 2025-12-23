@@ -53,6 +53,28 @@ return {
                 'typst',
                 'xhtml',
             },
+            dictionary = {
+                ['en-US'] = {
+                    'NetShare',
+                    'NetSSM',
+                    'NetDiffusion',
+                    'MIAs',
+                    'MIA',
+                    'PCAP',
+                    'PCAPs',
+                    'RPi',
+                    'CICIDS',
+                    'VCA',
+                    'parsability',
+                    'logits',
+                    'CIFAR',
+                    'MNIST',
+                    'DoppelGANger',
+                    'NetDPSyn',
+                    'Wasserstein',
+                    'timestep',
+                },
+            },
         }
     }
 }

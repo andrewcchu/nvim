@@ -1,67 +1,12 @@
--- Set visual soft-wrapping to 80 columns for TeX files
-vim.opt_local.columns = 100
--- vim.opt_local.textwidth = 80
-
--- Let j and k move up and down lines that have been wrapped
+-- Rebind keys to mimic navigation and edit behavior of hardwrap for softwrap
 local opts = { buffer = true, desc = "LaTeX specific keybinds" }
-vim.keymap.set("n", "j", "gj", opts)
-vim.keymap.set("n", "k", "gk", opts)
-
--- Apply a custom lualine configuration ONLY for TeX files
-require('lualine').setup {
-    options = {
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        always_show_tabline = true,
-        globalstatus = false,
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-            refresh_time = 16,
-            events = {
-                'WinEnter',
-                'BufEnter',
-                'BufWritePost',
-                'SessionLoadPost',
-                'FileChangedShellPost',
-                'VimResized',
-                'Filetype',
-                'CursorMoved',
-                'CursorMovedI',
-                'ModeChanged',
-            },
-        }
-    },
-    sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'filename' },
-        lualine_c = { 'diagnostics' },
-        lualine_x = {},
-        lualine_y = { 'diff' },
-        lualine_z = { 'branch' }
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {}
-    },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {}
-}
+vim.keymap.set({ "n", "v" }, "j", "gj", opts)
+vim.keymap.set({ "n", "v" }, "k", "gk", opts)
+vim.keymap.set({ "n", "v" }, "$", "g$", opts)
+vim.keymap.set({ "n", "v" }, "0", "g0", opts)
+vim.keymap.set({ "n", "v" }, "^", "g^", opts)
+vim.keymap.set("n", "A", "g$a", opts)
+vim.keymap.set("n", "I", "g^i", opts)
 
 -- Colorscheme switch
 local colorscheme = "srcery"
@@ -80,3 +25,33 @@ autocmd({ "InsertLeave" }, {
         vim.cmd("TeXpressoSync")
     end
 })
+
+-- Toggle latexindent for the current buffer
+vim.api.nvim_buf_create_user_command(0, 'ToggleLatexIndent', function()
+    -- Get the active texlab client for the current buffer
+    local client = vim.lsp.get_clients({ bufnr = 0, name = 'texlab_ls' })[1]
+    if not client then
+        vim.notify("Texlab client not found", vim.log.levels.WARN)
+        return
+    end
+
+    -- Access current settings
+    local settings = client.config.settings
+    -- Ensure the settings table exists
+    settings.texlab = settings.texlab or {}
+
+    -- Toggle between 'latexindent' and 'none'
+    if settings.texlab.latexFormatter == 'latexindent' then
+        settings.texlab.latexFormatter = 'none'
+        vim.notify("Texlab: latexindent disabled", vim.log.levels.INFO)
+    else
+        settings.texlab.latexFormatter = 'latexindent'
+        vim.notify("Texlab: latexindent enabled", vim.log.levels.INFO)
+    end
+
+    -- Update the client's internal config
+    client.config.settings = settings
+
+    -- Notify the LSP server of the configuration change
+    client.notify('workspace/didChangeConfiguration', { settings = settings })
+end, { desc = "Toggle latexindent" })

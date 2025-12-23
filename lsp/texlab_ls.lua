@@ -6,6 +6,8 @@
 ---
 --- See https://github.com/latex-lsp/texlab/wiki/Configuration for configuration options.
 
+local latexindent_config_path = vim.fn.stdpath('config') .. '/latexindent_config.yaml'
+
 local function client_with_fn(fn)
     return function()
         local bufnr = vim.api.nvim_get_current_buf()
@@ -164,14 +166,14 @@ end
 return {
     cmd = { 'texlab' },
     filetypes = { 'tex', 'plaintex', 'bib' },
-    root_markers = { '.git', '.latexmkrc', 'latexmkrc', '.texlabroot', 'texlabroot', 'Tectonic.toml' },
+    root_markers = { '.git', '.texlabroot', 'texlabroot', 'Tectonic.toml' },
     settings = {
         texlab = {
             rootDirectory = nil,
             build = {
-                executable = 'latexmk',
-                args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                onSave = false,
+                executable = 'tectonic',
+                args = { '-X', 'compile', '%f', '-k' },
+                onSave = true,
                 forwardSearchAfter = false,
             },
             forwardSearch = {
@@ -179,16 +181,16 @@ return {
                 args = {},
             },
             chktex = {
-                onOpenAndSave = false,
-                onEdit = false,
+                onOpenAndSave = true,
+                onEdit = true,
             },
             diagnosticsDelay = 300,
+            bibtexFormatter = 'texlab',
             latexFormatter = 'latexindent',
             latexindent = {
-                ['local'] = nil, -- local is a reserved keyword
-                modifyLineBreaks = false,
+                ['local'] = latexindent_config_path,
+                modifyLineBreaks = true,
             },
-            bibtexFormatter = 'texlab',
             formatterLineLength = 9999,
         },
     },

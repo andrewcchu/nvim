@@ -12,6 +12,5 @@ vim.lsp.enable('python_ls')
 if vim.fn.has('macunix') then
     vim.lsp.enable('texlab_ls')
     vim.lsp.enable('harper_ls')
-    vim.lsp.enable('digestif_ls')
     vim.lsp.enable('ltex_plus_ls')
 end

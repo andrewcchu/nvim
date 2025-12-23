@@ -115,3 +115,14 @@ vim.diagnostic.config({
     virtual_lines = false,
     virtual_text = false,
 })
+
+-- <CR> (Enter) accepts the completion
+vim.keymap.set('i', '<CR>', function()
+    -- If the popup is visible and an item is selected, confirm it with <C-y>
+    if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= -1 then
+        return '<C-y>'
+        -- If the popup is visible but nothing is selected, insert a newline (or you could choose to select the first item)
+    else
+        return '<CR>'
+    end
+end, { expr = true, noremap = true })
