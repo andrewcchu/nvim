@@ -9,9 +9,6 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, { desc = 'Open diagnostic list' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open single diagnostic window' })
 
--- Reformate text to textwidth
-vim.keymap.set('n', 'T', 'gqap', { desc = 'Reformat text to hardwrap at textwidth' })
-
 -- Set/unset paste mode
 vim.keymap.set({ 'n' }, '<C-p>', '<cmd>set paste!<cr>', { desc = 'Toggle paste mode' })
 
@@ -35,13 +32,3 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Copying into system clipboard
 vim.keymap.set('v', '<leader>y', '"+y', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>yy', '"+yy', { noremap = true, silent = true })
-
--- Fuzzy path insert
-vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>",
-  function() require("fzf-lua").complete_path() end,
-  { silent = true, desc = "Fuzzy complete path" })
-
--- Fzf-lua picker
-vim.keymap.set({ "n" }, "<leader>f",
-  function() require("fzf-lua").files({ follow = true }) end,
-  { silent = true, desc = "Picker" })
